@@ -1,0 +1,418 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Indyatra </title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets\css\main1.css" />
+        <style>
+        body {
+          margin: 0;
+          min-height: 100vh;
+          font-family: 'Open Sans';
+          background: #fafafa;
+        }
+
+        a {
+          color: inherit;
+        }
+
+        .cards-wrapper {
+          display: grid;
+          justify-content: center;
+          align-items: center;
+          grid-template-columns: 1fr 1fr 1fr;
+          grid-gap: 4rem;
+          padding: 4rem;
+          margin: 0 auto;
+          width: max-content;
+        }
+
+        .card {
+          font-family: 'Heebo';
+          --bg-filter-opacity: 0.5;
+          background-image: linear-gradient(rgba(0,0,0,var(--bg-filter-opacity)),rgba(0,0,0,var(--bg-filter-opacity))), var(--bg-img);
+          height: 20em;
+          width: 15em;
+          font-size: 1.5em;
+          color: white;
+          border-radius: 1em;
+          padding: 1em;
+          /*margin: 2em;*/
+          display: flex;
+          align-items: flex-end;
+          background-size: cover;
+          background-position: center;
+          box-shadow: 0 0 5em -1em black;
+          transition: all, var(--transition-time);
+          position: relative;
+          overflow: hidden;
+          border: 10px solid #ccc;
+          text-decoration: none;
+        }
+
+        .card:hover {
+          transform: rotate(0);
+        }
+
+        .card h1 {
+          margin: 0;
+          font-size: 1.5em;
+          line-height: 1.2em;
+        }
+
+        .card p {
+          font-size: 0.75em;
+          font-family: 'Open Sans';
+          margin-top: 0.5em;
+          line-height: 2em;
+        }
+
+        .card .tags {
+          display: flex;
+        }
+
+        .card .tags .tag {
+          font-size: 0.75em;
+          background: rgba(255,255,255,0.5);
+          border-radius: 0.3rem;
+          padding: 0 0.5em;
+          margin-right: 0.5em;
+          line-height: 1.5em;
+          transition: all, var(--transition-time);
+        }
+
+        .card:hover .tags .tag {
+          background: var(--color);
+          color: white;
+        }
+
+        .card:before, .card:after {
+          content: '';
+          transform: scale(0);
+          transform-origin: top left;
+          border-radius: 50%;
+          position: absolute;
+          left: -50%;
+          top: -50%;
+          z-index: -5;
+          transition: all, var(--transition-time);
+          transition-timing-function: ease-in-out;
+        }
+
+        .card:before {
+          background: #ddd;
+          width: 250%;
+          height: 250%;
+        }
+
+        .card:after {
+          background: black;
+          width: 200%;
+          height: 200%;
+        }
+
+        .card:hover {
+          color: var(--color);
+        }
+
+        .card:hover:before, .card:hover:after {
+          transform: scale(1);
+        }
+
+        .card-grid-space .num {
+          font-size: 3em;
+          margin-bottom: 1.2rem;
+          margin-left: 1rem;
+        }
+
+        .info {
+          font-size: 1.2em;
+          display: flex;
+          padding: 1em 3em;
+          position:relative;
+        }
+
+        .info img {
+          height: 3em;
+          margin-right: 0.5em;
+        }
+
+        .info h1 {
+          font-size: 1em;
+          font-weight: normal;
+        }
+
+        /* MEDIA QUERIES */
+        @media screen and (max-width: 1285px) {
+          .cards-wrapper {
+            grid-template-columns: 1fr 1fr;
+          }
+        }
+
+        @media screen and (max-width: 900px) {
+          .cards-wrapper {
+            grid-template-columns: 1fr;
+          }
+          .info {
+            justify-content: center;
+          }
+          .card-grid-space .num {
+            /margin-left: 0;
+            /text-align: center;
+          }
+        }
+
+        @media screen and (max-width: 500px) {
+          .cards-wrapper {
+            padding: 4rem 2rem;
+          }
+          .card {
+            max-width: calc(100vw - 4rem);
+          }
+        }
+
+        @media screen and (max-width: 450px) {
+          .info {
+            display: block;
+            text-align: center;
+          }
+          .info h1 {
+            margin: 0;
+          }
+        }
+
+
+        /* Slideshow container */
+        .slideshow-container {
+          max-width: 1000px;
+          position: relative;
+          margin: auto;
+        }
+
+        .active {
+          /*background-color: #717171;*/
+        }
+
+        /* Fading animation */
+        .fade {
+          -webkit-animation-name: fade;
+          -webkit-animation-duration: 1.5s;
+          animation-name: fade;
+          animation-duration: 1.5s;
+        }
+
+        @-webkit-keyframes fade {
+          from {opacity: .4} 
+          to {opacity: 1}
+        }
+
+        @keyframes fade {
+          from {opacity: .4} 
+          to {opacity: 1}
+        }
+
+        /* On smaller screens, decrease text size */
+        @media only screen and (max-width: 300px) {
+          .text {font-size: 11px}
+        }
+        * {
+          box-sizing: border-box;
+        }
+    </style>
+	</head>
+	<body class="subpage">
+
+			<header id="header" class="alt">
+				  <div class="logo">
+        <img src="images/logo-01.png" width="130" height="90" align="left">
+        <a href="index.html"></a></div>
+        <a href="#menu"><span>Menu</span></a>
+      </header>
+
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="spring.html">Spring</a></li>
+					<li><a href="gangtok.html">Gangtok</a></li>
+					<li><a href="noexist.html">Coonor</a></li>
+					<li><a href="noexist.html">Ooty</a></li>
+					<li><a href="noexist.html">Kasauli</a></li>
+					<li><a href="noexist.html">Darjeeling</a></li>
+					<li><a><br></a></li>
+					<li><a href="summer.html">Summer</a></li>
+					<li><a href="autumn.html">Autumn</a></li>
+					<li><a href="winter.html">Winter</a></li>
+				</ul>
+			</nav>
+
+			<section id="post" class="wrapper bg-img" data-bg="2.jfif">
+				<div class="inner">
+					<article class="box">
+						<header>
+							<h2>SPRING Season</h2>
+						</header>
+						<div class="content">
+
+<section class="info">
+<div class="slideshow-container">
+  <div class="mySlides fade">
+    <div class="card-grid-space">
+    <a class="card" href="gangtok.html" style="--bg-img:url('Spring/Gangtok (1).jpg')">
+      <div>
+        <h1>Gangtok</h1>
+        <p>Gangtok is a city, municipality, the capital and the largest town of the Indian state of Sikkim.</p>
+        <div class="tags">
+          <div class="tag">Read more...</div>
+        </div>
+      </div>
+    </a>
+  </div>
+  </div>
+
+<div class="mySlides fade">
+    <div class="card-grid-space">
+    <a class="card" style="--bg-img:url('Spring/Coonoor (1).jpg') ">
+      <div>
+        <h1>Coonor</h1>
+        <p>Coonoor is a Taluk and a municipality of the Nilgiris district in the Indian State of Tamil Nadu.</p>
+        <div class="tags">
+          <div class="tag">Read more...</div>
+        </div>
+      </div>
+    </a>
+  </div>
+  </div>
+
+<div class="mySlides fade">
+    <div class="card-grid-space">
+    <a class="card" style="--bg-img:url('Spring/Ooty (1).jpg')">
+      <div>
+        <h1>Ooty</h1>
+        <p>Ooty (short for Udhagamandalam) is a resort town in the Western Ghats mountains, in southern India's Tamil Nadu state.</p>
+        <div class="tags">
+          <div class="tag">Read more...</div>
+        </div>
+      </div>
+    </a>
+  </div>
+  </div>
+
+  <div class="mySlides fade">
+<div class="card-grid-space">
+    <a class="card" style="--bg-img:url('Spring/Kasauli (1).jpg') ">
+      <div>
+        <h1>Kasauli</h1>
+        <p>Kasauli is a cantonment and town, located in Solan district in the Indian state of Himachal Pradesh.</p>
+        <div class="tags">
+          <div class="tag">Read more...</div>
+        </div>
+      </div>
+    </a>
+  </div>
+  </div>
+
+  <div class="mySlides fade">
+    <div class="card-grid-space">
+    <a class="card" style="--bg-img:url('Spring/Darjeeling (1).jpg') ">
+      <div>
+        <h1>Darjeeling</h1>
+        <p>Darjeeling is a city and a municipality in the Indian state of West Bengal.</p>
+        <div class="tags">
+          <div class="tag">Read more...</div>
+        </div>
+      </div>
+    </a>
+  </div>
+  </div>
+ </section> 
+<br>
+<div style="text-align:center">
+  <div class="tooltip"><span class="dot" onclick="currentSlide(1)"><span class="tooltiptext"><img src="Spring/Gangtok (1).jpg" width="100px" height="100px"></span></div>
+  <div class="tooltip"><span class="dot" onclick="currentSlide(2)"><span class="tooltiptext"><img src="Spring/Coonoor (1).jpg" width="100px" height="100px"></span></div>
+  <div class="tooltip"><span class="dot" onclick="currentSlide(3)"><span class="tooltiptext"><img src="Spring/Ooty (1).jpg" width="100px" height="100px"></span></div>
+  <div class="tooltip"><span class="dot" onclick="currentSlide(4)"><span class="tooltiptext"><img src="Spring/Kasauli (1).jpg" width="100px" height="100px"></center></div>
+  <div class="tooltip"><span class="dot" onclick="currentSlide(5)"><span class="tooltiptext"><img src="Spring/Darjeeling (1).jpg" width="100px" height="100px"></span></div>
+</div>
+					
+
+						</div>
+						<footer>
+<ul class="actions">
+							<li><a onclick="plusSlides(-1)" class="button alt icon fa-chevron-left"><span class="label">Previous</span></a>
+							<li><a class="button alt icon fa-chevron-right" onclick="plusSlides(1)"><span class="label">Next</span></a>
+</ul>
+						</footer>
+					</article>
+				</div>
+			</section>
+			<footer id="footer">
+				<div class="inner">
+
+					<h2>Contact Us</h2>
+
+					<form action="#" method="post">
+
+						<div class="field half first">
+							<label for="name">Name</label>
+							<input name="name" id="name" type="text" placeholder="Name">
+						</div>
+						<div class="field half">
+							<label for="email">Email</label>
+							<input name="email" id="email" type="email" placeholder="Email">
+						</div>
+						<div class="field">
+							<label for="message">Message</label>
+							<textarea name="message" id="message" rows="6" placeholder="Message"></textarea>
+						</div>
+						<ul class="actions">
+							<li><input value="Send Message" class="button alt" type="submit"></li>
+						</ul>
+					</form>
+
+
+
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
+</script>
+
+	</body>
+</html>
